@@ -85,4 +85,20 @@ public class CountryDao {
 		}
 		return list;
 	}
+	public void insertCountry(Country country) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		String sql = "INSERT INTO country(country, last_update)VALUES(?,now())";
+		try {
+			conn =DBHelper.getConnection();
+			stmt= conn.prepareStatement(sql);
+			stmt.setString(1, country.getCountry());
+			stmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.close(null, stmt, conn);
+		}
+		
+	}
 }
