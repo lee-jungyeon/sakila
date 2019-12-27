@@ -71,7 +71,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 		//asid.html include
-		$("#aside").load("/sakila/aside.html");
+		$("#aside").load("/sakila/sakila/aside.html");
 let currentPage = 1;
 		
 		$("#list").empty();
@@ -118,7 +118,7 @@ let currentPage = 1;
 			});
 		});
 		
-		$("#nextBtn").click(function() {
+		$("#nextBtn").click(function(){
 			// db에서 전체 데이터 사이즈를 가지고 온다.
 			// 이 사이즈로 지금 마지막 페이지?
 					let count = 0;
@@ -157,6 +157,46 @@ let currentPage = 1;
 						html += "</tr>";
 					$("#list").append(html);
 					}
+				}
+			});
+			
+		});
+		$("#addCountry").click(function(){
+			currentPage=1;
+			console.log("#addCountry click!");
+			console.log("country.value : " , $("#country").val());
+		    if($("#country").val()===""){
+				alert("country를 입력하세요");
+				return;
+			}
+			
+			$.ajax({//html요청->ajax요청, 비동기방식
+				url:"/sakila/InsertCountryServlet",
+				data:{country : $("#country").val()},
+				method:"POST",
+				success: function(){
+					console.log("success!");
+					currentPage = 1;
+					
+					//입력 성공 후에 리스트를 가져옴
+					
+					$("#list").empty();
+					$.ajax({
+						url : "/sakila/SelectCountryListServlet",
+						method: "POST",
+						data : {currentPage : currentPage}, 
+						success : function(json){// json파일-> 자바 스크립트 객체변경
+							console.log(json);	
+							for(let i=0; i<json.length; i+=1){
+								let html = "<tr>";
+								html += "<td>"+json[i].countryId+"</td>";
+								html += "<td>"+json[i].country+"</td>";
+								html += "<td>"+json[i].lastUpdate+"</td>";
+								html += "</tr>";
+							$("#list").append(html);
+							}
+						}
+					});
 				}
 			});
 		});
