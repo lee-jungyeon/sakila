@@ -13,7 +13,7 @@ import sakila.address.model.Country;
 import sakila.address.model.CountryDao;
 
 
-@WebServlet("/InsertCityServlet")
+@WebServlet("/InsertCity")
 public class InsertCityServlet extends HttpServlet {
 	
 	private CityDao cityDao;

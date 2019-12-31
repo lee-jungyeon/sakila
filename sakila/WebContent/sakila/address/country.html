@@ -76,7 +76,7 @@ let currentPage = 1;
 		
 		$("#list").empty();
 		$.ajax({
-			url : "/sakila/SelectCountryListServlet",
+			url : "/sakila/SelectCountryList",
 			method: "POST", 
 			data : {currentPage : currentPage},
 			success : function(json){// json파일-> 자바 스크립트 객체변경
@@ -101,7 +101,7 @@ let currentPage = 1;
 			currentPage -=1;
 			console.log(currentPage);$("#list").empty();
 			$.ajax({
-				url : "/sakila/SelectCountryListServlet",
+				url : "/sakila/SelectCountryList",
 				method: "POST",
 				data : {currentPage : currentPage}, 
 				success : function(json){// json파일-> 자바 스크립트 객체변경
@@ -144,7 +144,7 @@ let currentPage = 1;
 			console.log(currentPage);
 			$("#list").empty();
 			$.ajax({
-				url : "/sakila/SelectCountryListServlet",
+				url : "/sakila/SelectCountryList",
 				method: "POST",
 				data : {currentPage : currentPage}, 
 				success : function(json){// json파일-> 자바 스크립트 객체변경
@@ -171,7 +171,7 @@ let currentPage = 1;
 			}
 			
 			$.ajax({//html요청->ajax요청, 비동기방식
-				url:"/sakila/InsertCountryServlet",
+				url:"/sakila/InsertCountry",
 				data:{country : $("#country").val()},
 				method:"POST",
 				success: function(){
@@ -182,7 +182,7 @@ let currentPage = 1;
 					
 					$("#list").empty();
 					$.ajax({
-						url : "/sakila/SelectCountryListServlet",
+						url : "/sakila/SelectCountryList",
 						method: "POST",
 						data : {currentPage : currentPage}, 
 						success : function(json){// json파일-> 자바 스크립트 객체변경

@@ -121,7 +121,7 @@
 				
 			}else{
 			$.ajax({
-				url : "/sakila/InsertCityServlet",
+				url : "/sakila/InsertCity",
 				method : "POST",
 				data : {"countryId":$("#countryId").val(),"city": $("#city").val()},
 				success : function(){
@@ -131,7 +131,7 @@
 					
 					$("#list").empty();
 					$.ajax({
-						url : "/sakila/selectCityList",
+						url : "/sakila/SelectCityList",
 						method: "POST",
 						data : {currentPage : currentPage}, 
 						success : function(json){// json파일-> 자바 스크립트 객체변경
@@ -159,7 +159,7 @@
 	
 	$("#list").empty();
 	$.ajax({
-		url : "/sakila/selectCityList",
+		url : "/sakila/SelectCityList",
 		method: "POST",
 		data : {currentPage : currentPage}, 
 		success : function(json){// json파일-> 자바 스크립트 객체변경
@@ -185,7 +185,7 @@
 		currentPage -=1;
 		console.log(currentPage);$("#list").empty();
 		$.ajax({
-			url : "/sakila/selectCityList",
+			url : "/sakila/SelectCityList",
 			method: "POST",
 			data : {currentPage : currentPage}, 
 			success : function(json){// json파일-> 자바 스크립트 객체변경
@@ -208,7 +208,7 @@
 		// 이 사이즈로 지금 마지막 페이지?
 				let count = 0;
 				$.ajax({
-					url :"/sakila/selectCityList",
+					url :"/sakila/SelectCityList",
 					method:"POST",
 					async :false,
 					success:function(json){
@@ -231,7 +231,7 @@
 		console.log(currentPage);
 		$("#list").empty();
 		$.ajax({
-			url : "/sakila/selectCityList",
+			url : "/sakila/SelectCityList",
 			method: "POST",
 			data : {currentPage : currentPage}, 
 			success : function(json){// json파일-> 자바 스크립트 객체변경
